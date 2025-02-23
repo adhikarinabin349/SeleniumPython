@@ -110,4 +110,21 @@ The framework is built to support different browsers. By adding a few configurat
 
 With the integration of pytest-html, you can generate detailed HTML reports for your tests, making it easier to understand test results, identify failures, and get insight into test execution times.
 
+## API Usage
+GET
+response = http_helper.get("/posts")
+if response.status_code == 200:
+    posts = response.json()
+    for post in posts:
+        print(post["title"])
+else:
+    print("Error:", response.status_code)
+POST
+new_post = {"title": "foo", "body": "bar", "userId": 1}
+response = http_helper.post("/posts", json_data=new_post)
+if response.status_code == 201:
+    print("Post created:", response.json())
+else:
+    print("Error:", response.status_code)
+
 # For any suggestions Please reach out to nabin.adhikari349@gmail.com (atroverse.com)
